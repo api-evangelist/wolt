@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.wolt.com/docs/testcases
+docs:
+  test_cases: https://developer.wolt.com/docs/testcases
+  faq: https://developer.wolt.com/docs/faq
+environments:
+- name: development
+  base_url_drive: https://daas-public-api.development.dev.woltapi.com
+  token_endpoint: https://integrations-authentication-service.development.dev.woltapi.com/oauth2/token
+- name: production
+  base_url_drive: https://daas-public-api.wolt.com
+  token_endpoint: https://integrations-authentication-service.wolt.com/oauth2/token
+notes: >-
+  Wolt provides a separate development environment (*.dev.woltapi.com) with its own
+  OAuth token endpoint, plus a documented Test Cases guide for validating an
+  integration before go-live. Credentials (client_id/client_secret, Merchant Key)
+  are issued per integration by a Wolt account/technical account manager; Wolt does
+  not publish shared/magic test tokens or test card numbers, so none are recorded here.

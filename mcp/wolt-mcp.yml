@@ -1,0 +1,51 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: https://developer.wolt.com/docs/api
+notes: >-
+  No official hosted Wolt MCP server was found. Tools below are a candidate surface
+  derived from documented Order API and Wolt Drive API operations, one tool per
+  documented operation. Not published by Wolt.
+server:
+  name: wolt
+  transport: http
+tools:
+- name: get_order
+  description: Retrieve order details
+  source_operation: 'GET /orders/{orderId}'
+- name: get_order_v2
+  description: Retrieve detailed order with pricing breakdown
+  source_operation: 'GET /v2/orders/{orderId}'
+- name: accept_order
+  description: Accept an order
+  source_operation: 'PUT /orders/{orderId}/accept'
+- name: reject_order
+  description: Reject an order
+  source_operation: 'PUT /orders/{orderId}/reject'
+- name: mark_order_ready
+  description: Mark an order as ready
+  source_operation: 'PUT /orders/{orderId}/ready'
+- name: mark_order_delivered
+  description: Mark an order delivered
+  source_operation: 'PUT /orders/{orderId}/delivered'
+- name: refund_order_items
+  description: Refund items on an order
+  source_operation: 'POST /orders/{orderId}/refund-items'
+- name: create_shipment_promise
+  description: Generate a Wolt Drive price and delivery-time estimate
+  source_operation: 'POST /v1/venues/{venue_id}/shipment-promises'
+- name: create_delivery
+  description: Create a Wolt Drive delivery from a shipment promise
+  source_operation: 'POST /v1/venues/{venue_id}/deliveries'
+- name: get_delivery_fee
+  description: Calculate a venueless delivery fee
+  source_operation: 'POST /merchants/{merchant_id}/delivery-fee'
+- name: create_delivery_order
+  description: Create a venueless delivery order
+  source_operation: 'POST /merchants/{merchant_id}/delivery-order'
+- name: cancel_delivery
+  description: Cancel a delivery before courier acceptance
+  source_operation: 'PATCH /order/{wolt_order_reference_id}/status/cancel'
+- name: get_handshake_pin
+  description: Retrieve the handshake-delivery PIN code
+  source_operation: 'GET /order/{wolt_order_reference_id}/handshake-delivery'

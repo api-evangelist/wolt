@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.wolt.com/docs/authentication20
+docs: https://developer.wolt.com/docs/authentication20
+summary:
+  types: [oauth2, http]
+  api_key_in: []
+  oauth2_flows: [authorizationCode, refreshToken]
+  token_type: bearer
+  token_format: JWT
+notes: >-
+  Wolt uses OAuth 2.0. The token endpoint is called with HTTP Basic authentication
+  (base64 of client_id:client_secret) and Content-Type application/x-www-form-urlencoded.
+  Access tokens are bearer JWTs valid for one hour; refresh tokens are single-use and
+  valid for 30 days (each refresh returns a new refresh token that must be cached).
+  API requests carry Authorization: Bearer {access_token}. Credentials are issued by a
+  Wolt account/technical account manager. Wolt Drive uses a Merchant Key bearer token.
+schemes:
+- name: OAuth2
+  type: oauth2
+  source: https://developer.wolt.com/docs/authentication20
+  flows:
+  - flow: authorizationCode
+    tokenUrl: https://integrations-authentication-service.wolt.com/oauth2/token
+    tokenUrl_dev: https://integrations-authentication-service.development.dev.woltapi.com/oauth2/token
+    grant_types: [authorization_code, refresh_token]
+    scopes: [offline]
+    client_auth: basic
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  source: https://developer.wolt.com/docs/api
+  applies_to: [Order API, Wolt Drive API]

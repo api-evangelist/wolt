@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.wolt.com/docs/changelog
+docs: https://developer.wolt.com/docs/changelog
+scheme: dated
+entries:
+- date: '2025-12-30'
+  breaking: true
+  title: VAT validation enforced on menu uploads
+  highlights: >-
+    Menu uploads now reject batches where more than 5% of items have invalid VAT
+    rates, returning HTTP 406 (Not Acceptable). A VAT rate is invalid if it does
+    not match a rate permitted by applicable local legislation.
+- date: '2025-01-24'
+  breaking: false
+  title: Group order participant support
+  highlights: >-
+    The Order API payload now includes a group order's participants information,
+    enabling venues to print separate labels per person in orders.

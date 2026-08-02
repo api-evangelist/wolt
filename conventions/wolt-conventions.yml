@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.wolt.com/docs
+docs: https://developer.wolt.com/docs
+authentication:
+  style: oauth2-bearer-jwt
+  token_header: 'Authorization: Bearer {access_token}'
+  token_endpoint: https://integrations-authentication-service.wolt.com/oauth2/token
+  ref: authentication/wolt-authentication.yml
+idempotency:
+  supported: true
+  mechanism: client-supplied merchant order reference id
+  field: merchant_order_reference_id
+  behavior: >-
+    Wolt Drive rejects a create-delivery request that reuses a merchant reference
+    ID already seen with the DUPLICATE_ORDER error code, so the merchant reference
+    id acts as an idempotency/deduplication key for order creation.
+  ref: errors/wolt-problem-types.yml
+versioning:
+  scheme: uri-path
+  versions: [v1, v2]
+  notes: Order API exposes both /orders and /v2/orders; Wolt Drive uses /v1 paths.
+  changelog: https://developer.wolt.com/docs/changelog
+error_envelope:
+  standard: '{ error_code, reason, details }'
+  validation: '{ detail: [ { type, loc, msg } ] }'
+  ref: errors/wolt-problem-types.yml
+webhooks:
+  transport: HTTP POST callback
+  signature_marketplace:
+    header: WOLT-SIGNATURE
+    algorithm: HMAC-SHA256 (hex) over the raw body using client_secret
+  signature_drive:
+    mechanism: HS256-signed JWT (token field), verified with the registered client_secret
+  retries: up to 3 attempts at 5-second intervals until a 200 is returned
+  ref: asyncapi/wolt-webhooks.yml
+rate_limiting:
+  signal: HTTP 429 on abnormally large request volume; wait before retrying
+retry_semantics:
+  do_not_retry: [400, 401, 404, 422]
+  wait_then_retry: [429]
+  retry: [5xx]
+environments:
+  production: https://daas-public-api.wolt.com
+  development: https://daas-public-api.development.dev.woltapi.com

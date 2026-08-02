@@ -1,0 +1,29 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Contact: https://app.intigriti.com/programs/wolt/wolt
+Contact: mailto:security@wolt.com
+Acknowledgments: https://app.intigriti.com/programs/wolt/wolt/leaderboard
+Policy: https://app.intigriti.com/company/programs/wolt/wolt
+Preferred-Languages: en
+Encryption: https://keybase.io/woltsecurity/pgp_keys.asc
+Canonical: https://wolt.com/.well-known/security.txt
+Hiring: https://careers.wolt.com
+Expires: 2027-01-31T13:37:00Z
+-----BEGIN PGP SIGNATURE-----
+
+iQJGBAEBCgAwFiEEyWK065tbghviDuyQx4mDJIr2h8AFAmilcLMSHHNlY3VyaXR5
+QHdvbHQuY29tAAoJEMeJgySK9ofAMMYP/RjnFHJJ6aOlbol3mn7SfCRhG6av7DqQ
+VWmJzLqB4QXMGtRIKt5rx2/FoU114sU71cfjAAgFGskKD/47fjzJmkYRwZ4rKgqC
+icmsR1mJVkoEo/EqnPr4i8BLm/vgTePYGqLZlxzxwXPp0g+/mICmOv4GVrHhXC1U
+x7aMClvm4YOWi0vXhyVxr2EIzu3LP/5peqg7Sw0eS9QpR/F522Y2CMdpszzympK0
+hRdkL1VT8FYM3sjexPcunBYHRQpnzOv2M0phdQv5R1YsK2RP2OV7M2nV8qfvBGH6
+agPngBJo6D97sLFh2qer4x0EeyCPNekkxgnM6kB31IxvlzlNugrxrTSTndnP5foh
+L65L88W+gUqAQGBNKEybIYZwN3pi7ohgB2whKmTqo9bxJnmy7fBcTJbvgS3IkLzH
+jE01RXIqibCuOwLkHN484ewxWCJYuWW151uE6ToGiC1Aun7LNpN8nDY2w69ToKu0
+jAG4FIZ+oO3KVyMKOSS3YD/RKMVM0A19HJCS9kL2fOVBYftuahDLqn+d6p2hycce
+CXLYnliCT924QHsw6jLnpzpF0FCLodKBFe8pmNyRrT3oue1n92ldaeKAkVkOGmfD
+GM4tjGgRhfmO3fAvtX5d918DfdvZmqSG+kcT1CUzyb/LzbateXOueNUyQ2E4fVoG
+Is/uFgQ3zaI4
+=NrHm
+-----END PGP SIGNATURE-----

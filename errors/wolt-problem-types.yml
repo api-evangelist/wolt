@@ -1,0 +1,100 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.wolt.com/docs/wolt-drive/error-handling
+format: custom-json
+envelopes:
+- name: standard
+  applies_to: [400, 404]
+  shape: '{ "error_code": "STRING", "reason": "STRING", "details": "STRING" }'
+- name: unauthorized
+  applies_to: [401]
+  shape: '{ "detail": "STRING" }'
+- name: validation
+  applies_to: [422]
+  shape: '{ "detail": [ { "type": "STRING", "loc": ["STRING"], "msg": "STRING" } ] }'
+http_statuses:
+- status: 400
+  retry: false
+  meaning: Payload error, or delivery unavailable
+- status: 401
+  retry: false
+  meaning: Unauthorized. The Bearer token does not match with the resource ID
+- status: 404
+  retry: false
+  meaning: Invalid resource ID in path parameters
+- status: 422
+  retry: false
+  meaning: Request payload did not pass validation
+- status: 429
+  retry: wait
+  meaning: Abnormally large number of requests was received
+- status: 5xx
+  retry: true
+  meaning: General error. Retry the request
+problems:
+- code: SHIPMENT_PROMISE_NOT_FOUND
+  title: Shipment promise ID is invalid or promise is expired
+  remediation: Generate a new shipment promise
+- code: DROPOFF_OUTSIDE_OF_DELIVERY_AREA
+  title: Dropoff location is outside delivery area
+  remediation: Restrict delivery to the service zone
+- code: PICKUP_OUTSIDE_DELIVERY_AREA
+  title: Pickup location outside delivery area
+  remediation: Verify pickup or contact Wolt
+- code: INVALID_DROPOFF_ADDRESS
+  title: Dropoff location is invalid
+  remediation: Verify address details
+- code: INVALID_PICKUP_ADDRESS
+  title: Invalid pickup address
+  remediation: Verify address details
+- code: INVALID_PAYLOAD
+  title: General invalid payload
+  remediation: Correct the request per response details
+- code: REQUEST_OUTSIDE_DELIVERY_HOURS
+  title: Delivery outside operating hours
+  remediation: Restrict delivery timing
+- code: INVALID_SCHEDULED_DROPOFF_TIME
+  title: Invalid scheduled time
+  remediation: Use a valid delivery window
+- code: CASH_ON_DELIVERY_DISABLED
+  title: Cash orders not supported
+  remediation: Disable the cash option
+- code: DELIVERY_NOT_ENABLED_FOR_DELIVERY_AREA
+  title: New deliveries currently disabled
+  remediation: Retry later
+- code: DELIVERY_AREA_CLOSED
+  title: Area unavailable
+  remediation: Retry later
+- code: DELIVERY_AREA_CLOSED_TEMPORARILY
+  title: Area temporarily closed
+  remediation: Retry later
+- code: DUPLICATE_ORDER
+  title: Duplicate with same merchant reference ID
+  remediation: Verify or use a new merchant reference ID
+- code: VENUE_CLOSED
+  title: Venue unavailable
+  remediation: Retry later
+- code: MISSING_MERCHANT_CONFIGURATION
+  title: Account misconfigured
+  remediation: Contact Wolt support
+- code: B2B_CONFIG_NOT_FOUND
+  title: Account misconfigured
+  remediation: Contact Wolt support
+- code: CORPORATE_PAYMENT_METHOD_NOT_FOUND
+  title: Account misconfigured
+  remediation: Contact Wolt support
+- code: DELIVERY_CONFIG_MISSING_PRICING
+  title: Delivery area misconfigured
+  remediation: Contact Wolt support
+- code: DELIVERY_CONFIG_DELIVERY_NOT_ENABLED
+  title: Delivery not enabled from venue
+  remediation: Contact Wolt support
+- code: VENUE_ORDER_LIMIT_EXCEEDED
+  title: Order limit exceeded
+  remediation: Contact Wolt support
+- code: ORDER_NOT_FOUND
+  title: Wolt order reference invalid
+  remediation: Verify the ID or create the delivery first
+- code: GENERIC_INTERNAL_ERROR
+  title: Internal server error
+  remediation: Retry with exponential backoff

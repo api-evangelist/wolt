@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.wolt.com/docs
+versioning:
+  scheme: uri-path
+  current: v2
+  versions: [v1, v2]
+  docs: https://developer.wolt.com/docs
+changelog:
+  url: https://developer.wolt.com/docs/changelog
+  scheme: dated
+environments:
+- name: production
+  base_url: https://daas-public-api.wolt.com
+- name: development
+  base_url: https://daas-public-api.development.dev.woltapi.com
+performance_standards: https://developer.wolt.com/docs/performancestandards
+notes: >-
+  No public status page or formal deprecation-policy page was found on
+  developer.wolt.com; breaking changes are announced via the dated changelog
+  (e.g. the 2025-12-30 VAT validation breaking change).

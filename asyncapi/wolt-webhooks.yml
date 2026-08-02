@@ -1,0 +1,84 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.wolt.com/docs/webhook
+spec_type: Webhooks
+docs:
+  marketplace: https://developer.wolt.com/docs/webhook
+  drive: https://developer.wolt.com/docs/wolt-drive/webhooks
+transport: HTTP POST callback to a merchant-registered callback_url
+security:
+  marketplace:
+    header: WOLT-SIGNATURE
+    algorithm: HMAC-SHA256 hex over the request body using the client secret (min 128-bit)
+  drive:
+    mechanism: each event encoded as an HS256-signed JWT in a "token" field, verified with the registered client_secret
+retries: up to 3 retries at 5-second intervals until the merchant returns HTTP 200
+surfaces:
+- name: Marketplace order events
+  payload_fields: [id, type, order.id, order.venue_id, order.status, order.resource_url, created_at]
+  events:
+  - name: CREATED
+    description: New order received
+  - name: PRODUCTION
+    description: Order accepted/confirmed by the venue
+  - name: READY
+    description: Preparation/collection completed
+  - name: CANCELED
+    description: Order rejected by merchant, customer, or Wolt
+  - name: COURIER ARRIVAL
+    optional: true
+    description: Courier arriving soon
+  - name: PICK-UP-COMPLETED
+    optional: true
+    description: Courier pickup finished
+  - name: DELIVERED
+    description: Order delivered to customer
+  - name: REVIEW
+    optional: true
+    description: Customer provided a rating
+- name: Marketplace venue events
+  payload_fields: [event_type, venue_id, external_venue_id, detected_at, details]
+  events:
+  - name: REJECTION_ALERT_TRIGGERED
+    description: Venue reached 3 consecutive rejections
+  - name: REJECTION_ALERT_RECOVERED
+    description: Successful order after a rejection alert
+  - name: VENUE_OFFLINE_ALERT_TRIGGERED
+    description: Venue went offline during opening hours
+  - name: VENUE_OFFLINE_ALERT_RECOVERED
+    description: Venue back online
+  - name: OPENING_HOURS_UPDATED
+    description: Opening hours changed (regular or exceptional)
+- name: Wolt Drive delivery events
+  payload_fields: [dispatched_at, type, id, venue_id, wolt_order_reference_id, tracking_reference, merchant_order_reference_id, order_number, price, pickup.eta, dropoff.eta, courier, parcels]
+  events:
+  - name: order.received
+    description: Order has been received successfully
+  - name: order.rejected
+    description: Order has been rejected
+  - name: order.pickup_eta_updated
+    description: Order pickup ETA is updated
+  - name: order.pickup_started
+    description: Courier has started a pickup task
+  - name: order.picked_up
+    description: Order has been picked up from venue
+  - name: order.pickup_arrival
+    description: Courier is arriving to pickup location
+  - name: order.dropoff_started
+    description: Courier has started a dropoff task
+  - name: order.dropoff_arrival
+    description: Courier is arriving to dropoff location
+  - name: order.dropoff_completed
+    description: Courier has completed the dropoff task
+  - name: order.delivered
+    description: Complete order has been delivered
+  - name: order.dropoff_eta_updated
+    description: Order dropoff ETA is updated
+  - name: order.handshake_delivery
+    description: Sent when delivery handshake verification is enabled
+  - name: order.customer_no_show
+    optional: true
+    description: Customer not reached; delivery unsuccessful
+  - name: order.location_updated
+    optional: true
+    description: Courier location info (heavy event load when enabled)

@@ -1,8 +1,14 @@
 aid: wolt
 name: Wolt
-description: 'Wolt is a company surfaced as a portfolio company of eqt-ventures, iconiq-capital and added
-  to the API Evangelist network as a stub for enrichment. Sector: marketplace. This profile is a lead
-  awaiting the enrichment pipeline.'
+description: >-
+  Wolt is a marketplace and last-mile delivery platform (part of DoorDash) operating across
+  Europe and beyond. Its developer surface exposes two production APIs: the Order / Marketplace
+  API, which delivers consumer orders into a merchant POS or in-store system and drives them
+  through accept, ready, and delivered states with refunds and group-order support; and the
+  Wolt Drive API, which provides on-demand last-mile delivery via shipment promises, delivery
+  creation, courier tracking, and webhooks. Authentication is OAuth 2.0 issuing one-hour bearer
+  JWTs (Wolt Drive uses a Merchant Key bearer token), with HMAC-SHA256 / HS256-JWT signed
+  webhooks for order and delivery lifecycle events.
 url: https://raw.githubusercontent.com/api-evangelist/wolt/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,13 +17,62 @@ x-backed-by:
 - iconiq-capital
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Marketplace
-apis: []
+- Food Delivery
+- Last Mile Delivery
+- Logistics
+- Webhooks
+- OAuth
+- Point of Sale
+apis:
+- name: Wolt Drive API
+  description: >-
+    On-demand last-mile delivery: generate binding shipment promises (price + ETA), create
+    deliveries, calculate venueless delivery fees, cancel before courier acceptance, retrieve
+    handshake PINs, and receive delivery-lifecycle webhooks.
+  humanURL: https://developer.wolt.com/docs/wolt-drive
+  baseURL: https://daas-public-api.wolt.com
+  tags:
+  - Delivery
+  - Logistics
+  - Last Mile
+  properties:
+  - type: APIReference
+    url: https://developer.wolt.com/docs/wolt-drive/endpoints
+  - type: Documentation
+    url: https://developer.wolt.com/docs/wolt-drive
+- name: Wolt Order / Marketplace API
+  description: >-
+    Receive and fulfill consumer marketplace orders in a POS/in-store system: accept, reject,
+    mark ready, mark delivered, refund items or basket, and handle preorders and group orders.
+  humanURL: https://developer.wolt.com/docs/api
+  baseURL: https://integrations-authentication-service.wolt.com
+  tags:
+  - Orders
+  - Marketplace
+  - Point of Sale
+  properties:
+  - type: APIReference
+    url: https://developer.wolt.com/docs/api
+  - type: Documentation
+    url: https://developer.wolt.com/docs/getting-started/restaurant
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -26,3 +81,62 @@ maintainers:
 common:
 - type: Website
   url: https://wolt.com
+- type: DeveloperPortal
+  url: https://developer.wolt.com/
+- type: Documentation
+  url: https://developer.wolt.com/docs
+- type: APIReference
+  url: https://developer.wolt.com/docs/api
+- type: GettingStarted
+  url: https://developer.wolt.com/docs/getting-started/restaurant
+- type: Support
+  url: https://developer.wolt.com/docs/faq
+- type: GitHubOrganization
+  url: https://github.com/woltapp
+- type: ChangeLog
+  url: https://developer.wolt.com/docs/changelog
+- type: ChangeLog
+  name: Wolt changelog (captured)
+  url: changelog/wolt-changelog.yml
+- type: Authentication
+  url: authentication/wolt-authentication.yml
+- type: OAuthScopes
+  url: scopes/wolt-scopes.yml
+- type: ErrorCatalog
+  url: errors/wolt-problem-types.yml
+- type: Conventions
+  url: conventions/wolt-conventions.yml
+- type: Idempotency
+  url: conventions/wolt-conventions.yml
+- type: Lifecycle
+  url: lifecycle/wolt-lifecycle.yml
+- type: Webhooks
+  url: asyncapi/wolt-webhooks.yml
+- type: Sandbox
+  url: sandbox/wolt-sandbox.yml
+- type: DataModel
+  url: data-model/wolt-data-model.yml
+- type: Conformance
+  url: conformance/wolt-conformance.yml
+- type: MCPServer
+  url: mcp/wolt-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: WellKnown
+  url: well-known/wolt-well-known.yml
+- type: SecurityTxt
+  url: well-known/wolt-security.txt
+- type: VulnerabilityDisclosure
+  url: security/wolt-vulnerability-disclosure.yml
+- type: Security
+  url: https://app.intigriti.com/programs/wolt/wolt
+- type: DomainSecurity
+  url: security/wolt-domain-security.yml
+- type: LLMsTxt
+  url: llms/wolt-llms.txt
+image: https://wolt.com/favicon.ico
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 20
+  pass: local-v1

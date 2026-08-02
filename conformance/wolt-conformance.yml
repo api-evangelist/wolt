@@ -1,0 +1,22 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.wolt.com/docs
+standards:
+- id: oauth2
+  conforms: true
+  evidence: OAuth 2.0 authorization_code + refresh_token flows with a /oauth2/token endpoint (docs/authentication20)
+- id: oidc
+  conforms: false
+  evidence: No OpenID Connect discovery document served on the auth host (/.well-known/openid-configuration -> 404)
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a custom { error_code, reason, details } envelope, not application/problem+json
+- id: webhooks-hmac
+  conforms: true
+  evidence: Marketplace webhooks are HMAC-SHA256 signed (WOLT-SIGNATURE); Drive webhooks are HS256-signed JWTs
+- id: rfc9116-security-txt
+  conforms: true
+  evidence: PGP-signed /.well-known/security.txt published at wolt.com with Contact/Policy/Expires
+- id: idempotency
+  conforms: true
+  evidence: merchant_order_reference_id de-duplicates create-delivery requests (DUPLICATE_ORDER)

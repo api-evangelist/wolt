@@ -1,0 +1,51 @@
+generated: '2026-07-21'
+method: derived
+source: https://developer.wolt.com/docs/api
+notes: >-
+  Derived from the documented Order API and Wolt Drive API request/response fields
+  (no OpenAPI published by Wolt). Entities and relationships reflect documented
+  path parameters and payload fields.
+entities:
+- name: venue
+  id: venue_id
+  aka: [external_venue_id]
+- name: order
+  id: orderId
+  fields: [venue_id, status, resource_url, participants]
+- name: delivery
+  id: wolt_order_reference_id
+  fields: [merchant_order_reference_id, tracking_reference, order_number, price, pickup, dropoff, parcels, courier]
+- name: shipment_promise
+  id: shipment_promise_id
+  fields: [price, delivery_time_estimate]
+- name: merchant
+  id: merchant_id
+- name: courier
+  fields: [name, location, eta]
+- name: parcel
+- name: delivery_area
+  fields: [polygon]
+relationships:
+- from: order
+  to: venue
+  type: belongs_to
+  via: venue_id
+- from: delivery
+  to: merchant
+  type: belongs_to
+  via: merchant_id
+- from: delivery
+  to: shipment_promise
+  type: has_one
+  via: shipment_promise_id
+- from: delivery
+  to: parcel
+  type: has_many
+  via: parcels
+- from: delivery
+  to: courier
+  type: has_one
+- from: venue
+  to: delivery_area
+  type: has_many
+  via: delivery-areas

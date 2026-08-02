@@ -1,0 +1,32 @@
+# Wolt
+
+> Wolt is a marketplace and last-mile delivery platform. Its developer surface exposes the Order/Marketplace API (receive and fulfill consumer orders through a POS/in-store system) and the Wolt Drive API (on-demand last-mile delivery: shipment promises, deliveries, tracking, and webhooks). Auth is OAuth 2.0 (bearer JWT); Wolt Drive uses a Merchant Key bearer token.
+
+## APIs
+- [Order / Marketplace API](https://developer.wolt.com/docs/api): Receive and manage consumer orders (accept, ready, delivered, refunds). Base paths /orders and /v2/orders.
+- [Wolt Drive API](https://developer.wolt.com/docs/wolt-drive/endpoints): Last-mile delivery. Production https://daas-public-api.wolt.com, dev https://daas-public-api.development.dev.woltapi.com.
+
+## Docs
+- [Developer Portal](https://developer.wolt.com/)
+- [Documentation](https://developer.wolt.com/docs)
+- [API Reference](https://developer.wolt.com/docs/api)
+- [Getting Started - Restaurant](https://developer.wolt.com/docs/getting-started/restaurant)
+- [Authentication 2.0](https://developer.wolt.com/docs/authentication20)
+- [Webhooks](https://developer.wolt.com/docs/webhook)
+- [Wolt Drive Webhooks](https://developer.wolt.com/docs/wolt-drive/webhooks)
+- [Wolt Drive Error Handling](https://developer.wolt.com/docs/wolt-drive/error-handling)
+- [Changelog](https://developer.wolt.com/docs/changelog)
+- [Test Cases](https://developer.wolt.com/docs/testcases)
+
+## Artifacts (API Evangelist)
+- Authentication: authentication/wolt-authentication.yml
+- OAuth scopes: scopes/wolt-scopes.yml
+- Error catalog: errors/wolt-problem-types.yml
+- Conventions: conventions/wolt-conventions.yml
+- Webhooks: asyncapi/wolt-webhooks.yml
+- Lifecycle: lifecycle/wolt-lifecycle.yml
+- Changelog: changelog/wolt-changelog.yml
+- Data model: data-model/wolt-data-model.yml
+- MCP (candidate): mcp/wolt-mcp.yml
+- Security: security/wolt-vulnerability-disclosure.yml, security/wolt-domain-security.yml
+- Well-known: well-known/wolt-well-known.yml

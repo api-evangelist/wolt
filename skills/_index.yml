@@ -1,0 +1,15 @@
+generated: '2026-07-21'
+method: generated
+source: https://developer.wolt.com/docs
+notes: >-
+  Skills are grounded in Wolt's documented REST operations (Wolt publishes no
+  OpenAPI file; operations are cited from developer.wolt.com/docs/api).
+skills:
+- file: wolt-fulfill-marketplace-order.md
+  name: Fulfill a Wolt Marketplace order
+  api: https://developer.wolt.com/docs/api
+  operations: [accept_order, mark_order_ready, mark_order_delivered]
+- file: wolt-create-drive-delivery.md
+  name: Create a Wolt Drive delivery
+  api: https://developer.wolt.com/docs/wolt-drive/endpoints
+  operations: [create_shipment_promise, create_delivery, cancel_delivery]

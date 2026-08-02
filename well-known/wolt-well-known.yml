@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+source: live probes of Wolt web + API hosts
+hosts:
+- host: https://wolt.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: wolt-security.txt
+- host: https://developer.wolt.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://daas-public-api.wolt.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://integrations-authentication-service.wolt.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404

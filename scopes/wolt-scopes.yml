@@ -1,0 +1,17 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.wolt.com/docs/authentication20
+docs: https://developer.wolt.com/docs/authentication20
+schemes:
+- name: OAuth2
+  source: https://developer.wolt.com/docs/authentication20
+  flows:
+  - flow: authorizationCode
+    tokenUrl: https://integrations-authentication-service.wolt.com/oauth2/token
+scopes:
+- scope: offline
+  description: >-
+    Grants the offline access needed to obtain new access and refresh tokens
+    (issues a refresh token alongside the access token).
+  flows: [authorizationCode]
+  sources: [https://developer.wolt.com/docs/authentication20]
