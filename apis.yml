@@ -38,6 +38,15 @@ tags:
 - Food Delivery
 - Last Mile Delivery
 - Logistics
+- Webhook
+- Authentication
+- Point-of-Sale
+tags_raw:
+- Company
+- Marketplace
+- Food Delivery
+- Last Mile Delivery
+- Logistics
 - Webhooks
 - OAuth
 - Point of Sale
@@ -65,6 +74,10 @@ apis:
   humanURL: https://developer.wolt.com/docs/api
   baseURL: https://integrations-authentication-service.wolt.com
   tags:
+  - Order
+  - Marketplace
+  - Point-of-Sale
+  tags_raw:
   - Orders
   - Marketplace
   - Point of Sale
