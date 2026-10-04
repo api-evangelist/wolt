@@ -52,6 +52,8 @@ tags:
 - Webhook
 - Authentication
 - Point-of-Sale
+- Restaurant
+- Delivery
 tags_raw:
 - Company
 - Marketplace
@@ -61,6 +63,8 @@ tags_raw:
 - Webhooks
 - OAuth
 - Point of Sale
+- Restaurant
+- Delivery
 apis:
 - name: Wolt Drive API
   description: >-
@@ -70,6 +74,10 @@ apis:
   humanURL: https://developer.wolt.com/docs/wolt-drive
   baseURL: https://daas-public-api.wolt.com
   tags:
+  - Delivery
+  - Logistics
+  - Last Mile Delivery
+  tags_raw:
   - Delivery
   - Logistics
   - Last Mile
